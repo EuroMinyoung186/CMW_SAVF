@@ -82,15 +82,13 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><a href="https://github.com/EuroMinyoung186">Minyoung Kim</a><sup>1</sup>,</span>
             <span class="author-block"><a href="https://github.com/owj0421">Sehwan Park</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://sites.google.com/view/sungmin-cha/">Sungmin Cha</a><sup>2,&dagger;</sup>,</span>
+            <span class="author-block"><a href="https://sites.google.com/view/sungmin-cha/">Sungmin Cha</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://phseo.github.io/">Paul Hongsuck Seo</a><sup>1,&dagger;</sup>,</span>
+              <a href="https://phseo.github.io/">Paul Hongsuck Seo</a><sup>1</sup>,</span>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Korea University,</span>
             <span class="author-block"><sup>2</sup>New York University</span>
-            <br>
-            <span class="eql-cntrb"><small><sup>&dagger;</sup>Co-corresponding Authors</small></span>
           </div>
           <div style="display: flex; justify-content: center; align-items: center;">
             <a href="https://www.korea.edu/sites/en/index.do" target="_blank">
@@ -184,7 +182,18 @@
           </p>
           <p>
             To address the tasks of AAR and TLA, we propose a watermarking-based approach. 
-            To embed the authentic audio within a visual frame, we employ INN based cross-modal watermarking (CMW), which has  the unique property of reversibility, allowing for exact recovery of inputs from outputs.
+            To embed the authentic audio within a visual frame, we employ INN based cross-modal watermarking (CMW), which has the unique property of reversibility, allowing for exact recovery of inputs from outputs.
+            
+            Formally, forward process is expressed as:
+            \[
+            I_\text{org}^{l+1} = I_\text{org}^{l} + \phi(A_\text{org}^{l}), \\
+            A_\text{org}^{l+1} = A_\text{org}^{l} \odot \mathrm{exp}(\sigma(\rho(I_\text{org}^{l+1}))) + \eta(I_\text{org}^{l+1})
+            \]
+            backward process is expressed as:
+            \[
+            A_\text{org}^{l} &= (A_\text{org}^{l+1} - \eta(I_\text{org}^{l+1})) \odot \mathrm{exp}(-\sigma(\rho(I_\text{org}^{l+1}))), \\
+            I_\text{org}^{l} &=I_\text{org}^{l+1} - \phi(A_\text{org}^{l}).
+            \]
             
           </p>
 <!--           <img src="./static/images/pseudoGT.png" class="center"/> -->
