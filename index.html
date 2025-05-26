@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="A Recurrent Compression Approach for Efficient Long-form Context and Query Dependent Modeling in LLMs">
-  <meta name="keywords" content="ReSCORE, label-free, RAG">
+        content="Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries">
+  <meta name="keywords" content="Synthesized Audiovisual Forgeries, Authentic Audio Recovery, Tamper Localization in Audio">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ReSCORE: Label-free Iterative Retriever Training for Multi-hop Question Answering with Relevance-Consistency Supervision</title>
+  <title>Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -74,28 +74,22 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">ReSCORE: Label-free Iterative Retriever Training for Multi-hop Question Answering with Relevance-Consistency Supervision</h1>
+          <h1 class="title is-1 publication-title">Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries</h1>
           <div class="is-size-3 publication-authors">
-            <img src="./static/images/acl-logo.png" alt="ACL Logo" style="height: 40px; vertical-align: middle;">
-            <b>ACL 2025</b>
+            <img src="./static/images/interspeech_log.jpg" alt="ACL Logo" style="height: 40px; vertical-align: middle;">
+            <b>Interspeech 2025</b>
           </div>
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="https://leeds1219.github.io/">Dosung Lee</a><sup>1,*</sup>,</span>
-            <span class="author-block"><a href="https://github.com/owj0421">Wonjun Oh</a><sup>1,*</sup>,</span>
-            <span class="author-block"><a href="bykimby.github.io">Boyoung Kim</a><sup>1</sup>,</span>
             <span class="author-block"><a href="https://github.com/EuroMinyoung186">Minyoung Kim</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="http://www.mathcs.richmond.edu/~jpark/">Joonsuk Park</a><sup>2,3,4,&dagger;</sup>,</span>
+            <span class="author-block"><a href="https://github.com/owj0421">Sehwan Park</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://sites.google.com/view/sungmin-cha/">Sungmin Cha</a><sup>2,&dagger;</sup>,</span>
             <span class="author-block">
               <a href="https://phseo.github.io/">Paul Hongsuck Seo</a><sup>1,&dagger;</sup>,</span>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Korea University,</span>
-            <span class="author-block"><sup>2</sup>Naver AI</span>
-            <span class="author-block"><sup>2</sup>Naver Cloud</span>
-            <span class="author-block"><sup>2</sup>University of Richmond</span>
+            <span class="author-block"><sup>2</sup>New York University</span>
             <br>
-            <span class="eql-cntrb"><small><sup>*</sup>Equal contribution</small></span>
             <span class="eql-cntrb"><small><sup>&dagger;</sup>Co-corresponding Authors</small></span>
           </div>
           <div style="display: flex; justify-content: center; align-items: center;">
@@ -105,14 +99,8 @@
             <a href="https://miil.korea.ac.kr/" target="_blank">
               <img src="./static/images/MIIL_full_logo.svg" alt="miil" style="height: 36px;">&nbsp;&nbsp;&nbsp;
             </a>
-            <a href="https://naver-career.gitbook.io/en/teams/clova-cic/ai-lab" target="_blank">
-              <img src="./static/images/naver_ai.png" alt="naver ai" style="height: 36px;">&nbsp;&nbsp;&nbsp;
-            </a>
-            <a href="https://naver-career.gitbook.io/kr/service/clova" target="_blank">
-              <img src="./static/images/naver_cloud.png" alt="naver cloud" style="height: 36px;">&nbsp;&nbsp;&nbsp;
-            </a>
             <a href="https://www.richmond.edu/" target="_blank">
-              <img src="./static/images/richmond_university.svg" alt="richmond" style="height: 36px;">&nbsp;&nbsp;&nbsp;
+              <img src="./static/images/nyu.webp" alt="richmond" style="height: 36px;">&nbsp;&nbsp;&nbsp;
             </a>
           </div>
 
@@ -138,7 +126,7 @@
                 </a>
               </span> -->
               <span class="link-block">
-                <a href="https://github.com/leeds1219/ReSCORE"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -164,16 +152,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Multi-hop question answering (MHQA) involves reasoning across multiple documents to answer complex questions. 
-            Dense retrievers typically outperform sparse methods like BM25 by leveraging semantic embeddings; 
-            however, they require labeled query-document pairs for fine-tuning. 
-            This poses a significant challenge in MHQA due to the high variability of queries---(reformulated) questions---throughout the reasoning steps. 
-            To overcome this limitation, we introduce Retriever Supervision with Consistency and Relevance (ReSCORE), 
-            a novel method for training dense retrievers for MHQA without labeled documents. 
-            ReSCORE leverages large language models to capture each document's relevance to the question and 
-            consistency with the correct answer and use them to train a retriever within an iterative question-answering framework. 
-            Experiments on three MHQA benchmarks demonstrate the effectiveness of ReSCORE, 
-            with significant improvements in retrieval, and in turn, the state-of-the-art MHQA performance.
+            Recent advances in voice cloning and lip synchronization models have enabled Synthesized Audiovisual Forgeries (SAVFs), where both audio and visuals are manipulated to mimic a target speaker. 
+            This significantly increases the risk of misinformation by making fake content seem real. 
+            To address this issue, existing methods detect or localize manipulations but cannot recover the authentic audio that conveys the semantic content of the message.
+            This limitation reduces their effectiveness in combating audiovisual misinformation. 
+            In this work, we introduce the task of Authentic Audio Recovery (AAR) and Tamper Localization in Audio (TLA) from SAVFs and propose a cross-modal watermarking framework to embed authentic audio into visuals before manipulation. 
+            This enables AAR, TLA, and a robust defense against misinformation.
+            Extensive experiments demonstrate the strong performance of our method in AAR and TLA against various manipulations, including voice cloning and lip synchronization.
           </p>
         </div>
       </div>
@@ -191,29 +176,16 @@
         <img src="./static/images/rescore.png" class="center"/>
         <div class="content has-text-justified">
           <p>
-            <b>Overview of ReSCORE</b>
-            At each iteration within a iterative RAG process, the retriever receives gradients from 
-            the KL-Divergence loss of the retrieval distribution against the pseudo-GT distribution, 
-            which is derived from the LLM probabilities of question and answer given each document with normalization. 
-            The number of iterations is dynamically determined by the LLM and 
-            the process ends if the LLM predicts an answer which is not “unknown”. 
-            The red dashed lines represents gradient flows for the retriever.
+            <b>Overview of Our Models</b>
+            The framework comprises three main processes: cross-modal watermarking (CMW), authentic audio recovery, and tamper localization. 
+            In the CMW process, CMW embed the authentic audio within a visual frame. 
+            For authentic audio recovery, noise estimators predict the transformed audio output from watermarked visual frame, enabling the inverse CMW to recover the authentic audio embedded in the visual frame.
+            Finally, in tamper localization, we compute feature maps for both the recovered and tampered audio to generate a score that identifies the tampered regions.
           </p>
           <p>
-            In order to identify which documents are relevant to the input question when labels are unavailable, 
-            we measure the distribution \(Q_\text{LM}^{(i)}(d_j^{(i)} \mid q^{(i)})\), which represents the likelihood of 
-            retrieving a document \(d_j^{(i)}\) given a query \(q^{(i)}\) at iteration \(i\).
-<!--             To achieve this, we leverage an LLM inspired by <a href="https://arxiv.org/abs/2208.03299" target="_blank">Izacard et al. (2023)</a>, 
-            which captures the intuition that \(Q_\text{LM}^{(i)}(d_j^{(i)} \mid q^{(i)})\) for a document \(d_j^{(i)}\) is proportional to the probability 
-            that the LLM generates both the question \(q\) and the corresponding answer \(a\) given \(d_j^{(i)}\). -->
-            Formally, expressed as:
-            \[
-            Q_{\text{LM}}^{(i)}(d_{j}^{(i)} \mid q) \propto P_{\text{LM}}^{(i)}(a, q \mid d_{j}^{(i)}) 
-            \]
-            \[
-            = P_{\text{LM}}^{(i)}(q \mid d_{j}^{(i)}) \cdot P_{\text{LM}}^{(i)}(a \mid q, d_{j}^{(i)})
-            \]
-            where \( P_\text{LM} \) denotes the probability of a token sequence as computed by the LLM.
+            To address the tasks of AAR and TLA, we propose a watermarking-based approach. 
+            To embed the authentic audio within a visual frame, we employ INN based cross-modal watermarking (CMW), which has  the unique property of reversibility, allowing for exact recovery of inputs from outputs.
+            
           </p>
 <!--           <img src="./static/images/pseudoGT.png" class="center"/> -->
           <p>
