@@ -171,7 +171,7 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered">Method</h2>
-        <img src="./static/images/rescore.png" class="center"/>
+        <img src="./static/images/arch_interspeech.png" class="center"/>
         <div class="content has-text-justified">
           <p>
             <b>Overview of Our Models</b>
@@ -181,29 +181,23 @@
             Finally, in tamper localization, we compute feature maps for both the recovered and tampered audio to generate a score that identifies the tampered regions.
           </p>
           <p>
-            To address the tasks of AAR and TLA, we propose a watermarking-based approach. 
-            To embed the authentic audio within a visual frame, we employ INN based cross-modal watermarking (CMW), which has the unique property of reversibility, allowing for exact recovery of inputs from outputs.
-            
-            Formally, forward process is expressed as:
-            \[
-            I_\text{org}^{l+1} = I_\text{org}^{l} + \phi(A_\text{org}^{l}), \\
-            A_\text{org}^{l+1} = A_\text{org}^{l} \odot \mathrm{exp}(\sigma(\rho(I_\text{org}^{l+1}))) + \eta(I_\text{org}^{l+1})
-            \]
-            backward process is expressed as:
-            \[
-            A_\text{org}^{l} &= (A_\text{org}^{l+1} - \eta(I_\text{org}^{l+1})) \odot \mathrm{exp}(-\sigma(\rho(I_\text{org}^{l+1}))), \\
-            I_\text{org}^{l} &=I_\text{org}^{l+1} - \phi(A_\text{org}^{l}).
-            \]
-            
+            In this work, we aim to recover authentic audio and localize temporally tampered regions in Synthesized Audiovisual Forgeries (SAVFs), which are generated via voice cloning and lip synchronization. 
+            Specifically, our objectives are: (1) to reconstruct the original audio from tampered AVS inputs and (2) to detect time intervals ${(t^i_\mathrm{start}, t^i_\mathrm{end})}_{i=1}^N$ corresponding to manipulated audio segments.
+            To address the tasks of AAR and TLA, we propose a watermarking-based approach as follows: 
+            Given an original AVS $X_\text{org} = (I_\text{org}, A_\text{org})$, we imperceptibly embed the authentic audio $A_\text{org}$ into the visual frame $I_\text{org}$ to produce a watermarked AVS $X_\text{wm} = (I_\text{wm}, A_\text{org})$.
+            After potential tampering (e.g., lip synchronization or voice cloning), we obtain $X_\text{tam} = (I_\text{tam}, A_\text{tam})$. 
+            For Authentic Audio Recovery (AAR) and Tamper Localization in Audio (TLA), our method reconstructs $A_\text{rec}$ from $I_\text{tam}$ and compares it with $A_\text{tam}$ to identify manipulated regions.
           </p>
 <!--           <img src="./static/images/pseudoGT.png" class="center"/> -->
           <p>
-            While \( P_{\text{LM}}^{(i)}(a \mid q, d_j^{(i)}) \) aligns more directly with the QA training objective, it often fails to fully capture a document’s relevance to a query. 
-            This is because the language model might assign high scores based on superficial word alignments, even when the document is irrelevant. 
-            For example, a document titled "Paris" might score higher than more relevant documents for a question about Acura Legend’s history, simply because it contains the correct year, "1981", 
-            which confuses the model despite the document's irrelevance.
-            On the other hand, \( P_{\text{LM}}^{(i)}(a, q \mid d_j^{(i)}) \) incorporates the term \( P_{\text{LM}}^{(i)}(q \mid d_j^{(i)}) \), which measures a document’s relevance to the query. 
-            This helps avoid issues like the one described above, ensuring that documents with better contextual relevance are preferred. 
+            For the watermarking process, we employ Cross-Modal Watermarking (CMW), which consists of a series of Invertible Neural Network (INN) blocks. 
+            INNs have the distinctive property of reversibility, allowing the original inputs to be exactly recovered from their outputs. 
+            Specifically, given an original visual frame and its corresponding audio, CMW embeds the audio into the visual domain by transforming both modalities through a stack of INN blocks. 
+            This process produces a watermarked visual that imperceptibly carries the audio information. 
+            Crucially, the reversible nature of INNs enables us to later recover the embedded audio from the (potentially tampered) visual input, thereby supporting Authentic Audio Recovery (AAR).
+            After performing AAR, we localize tampered regions by comparing the recovered and tampered audio in a semantic feature space. 
+            Instead of directly comparing raw audio signals, which are sensitive to noise and recovery artifacts, we extract high-level audio features and compute cosine similarity at each timestep. 
+            This feature-level comparison enables robust and precise tamper localization by focusing on semantic differences rather than low-level signal variations.
 <!--             Furthermore, relevance alone does not guarantee that a document contains sufficient information to answer the question, as it may still lack consistency with the correct answer. -->
           </p>
         </div>
@@ -215,23 +209,32 @@
         <h2 class="title is-3 has-text-centered">Results</h2>
         <!--<embed src="./static/pdf/result1.pdf" type="./static/images/result1.pdf" width="100%" height="600px"/> -->
         <div style="text-align: center;">
-          <img src="./static/images/result_1.png" class="center" style="width: 90%;" />
+          <img src="./static/images/localization.png" class="center" style="width: 90%;" />
         </div>
         <div class="content has-text-justified">
           <p>
-            <b>Comparisons to State-of-the-Art Iterative RAG Frameworks on three MHQA benchmarks</b>
-            EM and F1 scores are measured on each dataset. † Scores are sourced from (Wang et al., 2024). 
-            ‡ Scores are reproduced using the official codes. 
-            ‡‡ Scores are sourced from the original paper (Jeong et al., 2024).
+            <b>Comparison of Different Audio Tamper Localization Methods on the HDTF Dataset.</b>
+            Tampering simulation uses two methods: AS-inserting a different audio segment into the parts of original audio and VS-modifying parts of the audio with voice generated by voice cloning model. 
+            Localization metrics include IoU, AP, and AUC, while SNR and PESQ measure recovered audio quality, respectively.
+            SSIM and PSNR measure video quality. WM and CM refer to watermarking and cross-modal techniques.
           </p>
         </div>
-         <img src="./static/images/result_2.png" class="center"/>
+         <img src="./static/images/lipsync.png" class="center"/>
         <div class="content has-text-justified">
           <p>
-            <b>Comparison of GT and Pseudo-GT Labels on All Relevant Document Retrieval</b>
-            The y-axis shows the proportion of questions for which all relevant documents were found, 
-            which are all needed to correctly answer a given complex question. 
-            Pseudo-GT labels lead to improved performance as the number of iterations increases.
+            <b>Comparison of Different Lip Synchronization Methods.</b>
+            We evaluate our model's robustness against three lip synchronization methods. 
+            As shown in Table, performance is highest without manipulation, preserving the embedded watermark. 
+            Although lip synchronization introduces some degradation, speech remains intelligible and scores stay relatively high. 
+            Notably, TLA accuracy consistently exceeds 90%, demonstrating the model’s effectiveness and reliability under adversarial conditions.
+          </p>
+        </div>
+        <h2 class="title is-1 has-text-centered">Results</h2>
+        <img src="./static/images/qualitative.png" class="center"/>
+        <div class="content has-text-justified">
+          <p>
+            <b>Qualitative Examples</b>
+            The watermarked frames and recovered audio closely resemble the original AVS, ensuring imperceptible embedding and authentic audio recovery.
           </p>
         </div>
       </div>
