@@ -1,0 +1,135 @@
+#### general settings
+
+name: full_3
+use_tb_logger: true
+model: MIMO-VRN-h
+distortion: sr
+scale: 4
+gpu_ids: [2,3]
+gop: 3
+num_video: 1
+moco_m : 0.999
+
+#### datasets
+
+datasets:
+  train:
+    name: Vimeo90K
+    mode: train
+    interval_list: [1]
+    random_reverse: false
+    border_mode: false
+    video_path: /watermark/VideoSet2
+    audio_path: /watermark/AudioSet_make
+    video_txt_path: /watermark/VideoSet2.txt
+    audio_txt_path: /watermark/AudioSet2.txt
+    dataroot_LQ: ~/vimeo90k/vimeo90k_train_LR7frames.lmdb
+    audio_sample_rate: 16000
+    hop_length: 200
+    cache_keys: Vimeo90K_train_keys.pkl
+    num_video: 1
+    split_standard : 7750
+    
+
+    N_frames: 1
+    use_shuffle: true
+    n_workers: 4  # per GPU
+    batch_size: 16
+    GT_size: 256
+    LQ_size: 36
+    use_flip: true
+    use_rot: true
+    color: RGB
+
+  val:
+    num_video: 1
+    name: Vid4
+    mode: test
+    video_path: /watermark/DAVIS/JPEGImages/480p
+    audio_path: /watermark/TestAudioSetdot5second
+    sr_path: /watermark/E2FGVI/results2
+    video_mask_path: /watermark/DAVIS/Annotations/480p
+    video_txt_path: /watermark/DAVIS/ImageSets/2016/train.txt
+    audio_txt_path: /watermark/DAVIS/ImageSets/2016/train.txt
+    audio_sample_rate: 16000
+    hop_length: 200
+    txt_path: /home/aikusrv02/watermarking/test.txt
+    split_standard : 7750
+    num_fps : 2
+
+    N_frames: 1
+    GT_size: 256
+    LQ_size: 36
+    padding: 'new_info'
+    pred_interval: -1
+    interval_list: [1]
+    random_reverse: false
+
+
+#### network structures
+
+network_G:
+  which_model_G:
+      subnet_type: DBNet
+  in_hi_nc: 1
+  in_ho_nc: 2
+
+
+  out_nc: 12
+  block_num: [8,8]
+  scale: 2
+  init: xavier_group
+  block_num_rbm: 8
+
+
+#### path
+
+path:
+  pretrain_model_G: /watermark/experiments/full_3/models/100000_G.pth
+  pretrain_model_M: /watermark/experiments/full_3/models/100000_E.pth
+  models: ckp/base
+  strict_load: true
+  resume_state: /watermark/experiments/full_3/training_state/100000.state
+  val_images: #/watermark/Result
+
+
+#### training settings: learning rate scheme, loss
+
+train:
+
+  lr_G: !!float 1e-4
+  lr_E: !!float 3e-2
+
+  momentum: 0.9
+  beta1: 0.9
+  beta2: 0.5
+  niter: 500000
+  warmup_iter: -1  # no warm up
+
+  lr_scheme: MultiStepLR
+  lr_steps: [30000, 60000, 90000, 150000, 180000, 210000]
+  lr_gamma: 0.5
+  schedule: [120, 160]
+  cos: false
+
+  pixel_criterion_forw: l2
+  pixel_criterion_back: l1
+
+  manual_seed: 10
+
+  val_freq: !!float 1000 #!!float 5e3
+
+  lambda_fit_forw: 64.
+  lambda_rec_back: 1
+  lambda_center: 0
+
+  weight_decay_G: !!float 1e-12
+  weight_decay_E: !!float 1e-4
+  gradient_clipping: 10
+
+
+#### logger
+
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3
