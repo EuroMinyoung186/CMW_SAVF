@@ -15,10 +15,10 @@
 </p>
 
 <p align="center">
-  by <a href="https://github.com/EuroMinyoung186">Minyoung Kim</a>*,
+  by <a href="https://github.com/EuroMinyoung186">Minyoung Kim</a>,
   <a href="">Sehwan Park</a>,
-  <a href="https://sites.google.com/view/sungmin-cha/">Sungmin Cha</a>†,
-  <a href="https://miil.korea.ac.kr/">Paul Hongsuck Seo</a>†
+  <a href="https://sites.google.com/view/sungmin-cha/">Sungmin Cha</a>,
+  <a href="https://miil.korea.ac.kr/">Paul Hongsuck Seo</a>
 </p>
 
 ## Introduction
