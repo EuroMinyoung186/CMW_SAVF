@@ -11,7 +11,7 @@
 # <p align="center">Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries</p>
 
 <p align="center">
-  <a href="">arXiv</a> | <a href="https://github.com/EuroMinyoung186/CMW_SAVF">Project</a>
+  <a href="https://arxiv.org/abs/2507.12723">arXiv</a> | <a href="https://github.com/EuroMinyoung186/CMW_SAVF">Project</a>
 </p>
 
 <p align="center">
