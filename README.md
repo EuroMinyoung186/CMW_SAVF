@@ -28,7 +28,7 @@ This is our official implementation of Cross-Modal Watermarking for Authentic Au
 ![Figure](assets/arch_interspeech.png)
 In this work, we aim to recover authentic audio and localize temporally tampered regions in Synthesized Audiovisual Forgeries (SAVFs), which are generated via voice cloning and lip synchronization. 
 
-For further details, please check out our [Paper](https://arxiv.org/abs/) and our [Project](https://eurominyoung186.github.io/CMW_SAVF/) page.
+For further details, please check out our [Paper](https://arxiv.org/abs/2507.12723) and our [Project](https://eurominyoung186.github.io/CMW_SAVF/) page.
 
 ## :fire:TODO
 - [x] Code Release
